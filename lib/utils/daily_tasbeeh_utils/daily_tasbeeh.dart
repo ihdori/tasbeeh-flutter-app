@@ -18,12 +18,6 @@ Consumer dailyTasbeeh() {
           if (next.counted == next.toCount) {
             thanksDialog(context: context, tasbeehType: 'الذكر');
           }
-          // if (next.value == 5 || next.value == 6) {
-          //   ref.read(dailyTasbeehProvider.notifier).updateShape(
-          //         newShape: FrameCustomPainterLonge(),
-          //       );
-          //   print('-----------------------------5555555-------------------------------');
-          // }
         },
       );
       return Column(
@@ -58,7 +52,6 @@ Consumer dailyTasbeeh() {
                         width: newValue == 5 ? 300 : 380,
                         newShape: FrameCustomPainterLonge(color: Theme.of(context).primaryColor),
                       );
-                  print('Value changed');
                 } else {
                   ref.read(dailyTasbeehProvider.notifier).updateShape(
                         width: 250,
@@ -66,7 +59,7 @@ Consumer dailyTasbeeh() {
                       );
                 }
               },
-              hint: Text('قم بتحديد اليوم'),
+              hint: const Text('قم بتحديد اليوم'),
               underline: const SizedBox(),
               borderRadius: BorderRadius.circular(12),
               focusColor: Theme.of(context).primaryColor,
@@ -75,32 +68,32 @@ Consumer dailyTasbeeh() {
               value: dailyTasbeeh.value,
               items: const <DropdownMenuItem>[
                 DropdownMenuItem(
-                  child: Text('السبت'),
                   value: 0,
+                  child: Text('السبت'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الأحد'),
                   value: 1,
+                  child: Text('الأحد'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الإثنين'),
                   value: 2,
+                  child: Text('الإثنين'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الثلاثاء'),
                   value: 3,
+                  child: Text('الثلاثاء'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الأربعاء'),
                   value: 4,
+                  child: Text('الأربعاء'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الخميس'),
                   value: 5,
+                  child: Text('الخميس'),
                 ),
                 DropdownMenuItem(
-                  child: Text('الجمعة'),
                   value: 6,
+                  child: Text('الجمعة'),
                 ),
               ],
             ),

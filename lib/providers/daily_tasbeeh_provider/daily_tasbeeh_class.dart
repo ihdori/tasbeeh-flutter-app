@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
-import 'package:tasbeeh/utils/text_to_say.dart';
 
 class DailyTasbeehState {
   DailyTasbeehState({
