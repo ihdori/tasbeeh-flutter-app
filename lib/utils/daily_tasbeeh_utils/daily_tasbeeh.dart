@@ -4,6 +4,7 @@ import 'package:tasbeeh/providers/daily_tasbeeh_provider/daily_tasbeeh_provider.
 import 'package:tasbeeh/utils/counted_number_box.dart';
 import 'package:tasbeeh/utils/tasbeeh_button.dart';
 import 'package:tasbeeh/utils/text_to_say.dart';
+import 'package:tasbeeh/utils/thanks_dialog.dart';
 
 Consumer dailyTasbeeh() {
   return Consumer(
@@ -12,6 +13,9 @@ Consumer dailyTasbeeh() {
       ref.listen(
         dailyTasbeehProvider,
         (previous, next) {
+          if (next.counted == next.toCount) {
+            thanksDialog(context: context, tasbeehType: 'الذكر');
+          }
           if (next.value == 5 || next.value == 6) {
             ref.read(dailyTasbeehProvider.notifier).updateShape(
                   FrameCustomPainterLonge(context: context),
