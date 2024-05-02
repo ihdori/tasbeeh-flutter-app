@@ -1,6 +1,6 @@
-import 'dart:ffi';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
 import 'package:tasbeeh/utils/text_to_say.dart';
 
 class DailyTasbeehState {
@@ -16,7 +16,7 @@ class DailyTasbeehState {
   final int toCount;
   final String text;
   final int value;
-  final shape;
+  final CustomPainter shape;
   final double width;
 
   DailyTasbeehState copyWith({
@@ -46,7 +46,7 @@ class DailyTasbeeh extends StateNotifier<DailyTasbeehState> {
             toCount: 100,
             text: 'يارب العالمين',
             value: 0,
-            shape: null,
+            shape: FrameCustomPainterShort(),
             width: 250.0,
           ),
         );
@@ -78,9 +78,7 @@ class DailyTasbeeh extends StateNotifier<DailyTasbeehState> {
     }
   }
 
-  updateShape(newShape, double width) {
-    if (state.shape == null && newShape != null) {
-      state = state.copyWith(shape: newShape, width: width);
-    }
+  updateShape({required CustomPainter newShape, required double width}) {
+    state = state.copyWith(shape: newShape, width: width);
   }
 }
