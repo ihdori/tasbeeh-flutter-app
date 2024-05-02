@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
 
 CustomPaint textToSay({
   required text,
@@ -13,7 +12,7 @@ CustomPaint textToSay({
     painter: shape,
     child: Container(
       width: width,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       child: Text(
         text,
         textAlign: TextAlign.center,
@@ -22,6 +21,3 @@ CustomPaint textToSay({
     ),
   );
 }
-
-//new
-
