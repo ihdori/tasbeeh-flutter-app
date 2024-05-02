@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasbeeh/providers/daily_tasbeeh_provider/daily_tasbeeh_provider.dart';
 import 'package:tasbeeh/utils/counted_number_box.dart';
+import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_long.dart';
+import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
 import 'package:tasbeeh/utils/tasbeeh_button.dart';
 import 'package:tasbeeh/utils/text_to_say.dart';
 import 'package:tasbeeh/utils/thanks_dialog.dart';
@@ -16,28 +18,22 @@ Consumer dailyTasbeeh() {
           if (next.counted == next.toCount) {
             thanksDialog(context: context, tasbeehType: 'الذكر');
           }
-          if (next.value == 5 || next.value == 6) {
-            ref.read(dailyTasbeehProvider.notifier).updateShape(
-                  FrameCustomPainterLonge(context: context),
-                  380,
-                );
-            print('-----------------------------5555555-------------------------------');
-          } else if (next.value != 5 || next.value != 6) {
-            ref.read(dailyTasbeehProvider.notifier).updateShape(
-                  FrameCustomPainterSmall(context: context),
-                  250,
-                );
-            print('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-          }
+          // if (next.value == 5 || next.value == 6) {
+          //   ref.read(dailyTasbeehProvider.notifier).updateShape(
+          //         newShape: FrameCustomPainterLonge(),
+          //       );
+          //   print('-----------------------------5555555-------------------------------');
+          // }
         },
       );
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          //this is the frame and text that user will say
           textToSay(
+            context: context,
             shape: dailyTasbeeh.shape,
             text: dailyTasbeeh.text,
-            context: context,
             width: dailyTasbeeh.width,
             fontSize: 20,
           ),
@@ -57,6 +53,18 @@ Consumer dailyTasbeeh() {
             child: DropdownButton(
               onChanged: (newValue) {
                 ref.read(dailyTasbeehProvider.notifier).updateValue(newValue);
+                if (newValue == 5 || newValue == 6) {
+                  ref.read(dailyTasbeehProvider.notifier).updateShape(
+                        width: newValue == 5 ? 300 : 380,
+                        newShape: FrameCustomPainterLonge(color: Theme.of(context).primaryColor),
+                      );
+                  print('Value changed');
+                } else {
+                  ref.read(dailyTasbeehProvider.notifier).updateShape(
+                        width: 250,
+                        newShape: FrameCustomPainterShort(color: Theme.of(context).primaryColor),
+                      );
+                }
               },
               hint: Text('قم بتحديد اليوم'),
               underline: const SizedBox(),
