@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasbeeh/providers/daily_tasbeeh_provider/daily_tasbeeh_provider.dart';
+import 'package:tasbeeh/providers/time_provider/time_provider.dart';
 import 'package:tasbeeh/utils/counted_number_box.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_long.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
@@ -13,7 +14,7 @@ Consumer dailyTasbeeh() {
   return Consumer(
     builder: (context, ref, child) {
       final dailyTasbeeh = ref.watch(dailyTasbeehProvider);
-
+      final day = ref.watch(chageableTimeProvider);
       ref.listen(
         dailyTasbeehProvider,
         (previous, next) {
@@ -47,8 +48,11 @@ Consumer dailyTasbeeh() {
               borderRadius: BorderRadius.circular(12),
             ),
             child: DropdownButton(
+              value: day,
               onChanged: (newValue) {
+                print(day);
                 ref.read(dailyTasbeehProvider.notifier).updateValue(newValue);
+                ref.read(chageableTimeProvider.notifier).update((state) => newValue);
                 if (newValue == 5 || newValue == 6) {
                   ref.read(dailyTasbeehProvider.notifier).updateShape(
                         width: newValue == 5 ? 300 : 380,
@@ -67,7 +71,6 @@ Consumer dailyTasbeeh() {
               focusColor: Theme.of(context).primaryColor,
               iconEnabledColor: Theme.of(context).primaryColor,
               isExpanded: true,
-              value: dailyTasbeeh.value,
               items: const <DropdownMenuItem>[
                 DropdownMenuItem(
                   value: 0,
