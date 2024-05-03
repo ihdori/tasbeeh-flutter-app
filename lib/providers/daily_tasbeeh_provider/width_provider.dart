@@ -5,9 +5,9 @@ final widthProvider = Provider<double>(
   (ref) {
     final day = ref.watch(dateProvider).weekday;
     switch (day) {
-      case 5:
+      case 4:
         return 300;
-      case 6:
+      case 5:
         return 380;
       default:
         return 250;

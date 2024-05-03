@@ -50,12 +50,12 @@ Consumer dailyTasbeeh() {
             child: DropdownButton(
               value: day,
               onChanged: (newValue) {
-                print(day);
                 ref.read(dailyTasbeehProvider.notifier).updateValue(newValue);
                 ref.read(chageableTimeProvider.notifier).update((state) => newValue);
-                if (newValue == 5 || newValue == 6) {
+                print('$day --- value: $newValue');
+                if (newValue == 4 || newValue == 5) {
                   ref.read(dailyTasbeehProvider.notifier).updateShape(
-                        width: newValue == 5 ? 300 : 380,
+                        width: newValue == 4 ? 300 : 380,
                         newShape: FrameCustomPainterLonge(color: Theme.of(context).primaryColor),
                       );
                 } else {
@@ -73,31 +73,31 @@ Consumer dailyTasbeeh() {
               isExpanded: true,
               items: const <DropdownMenuItem>[
                 DropdownMenuItem(
-                  value: 0,
+                  value: 6,
                   child: Text('السبت'),
                 ),
                 DropdownMenuItem(
-                  value: 1,
+                  value: 7,
                   child: Text('الأحد'),
                 ),
                 DropdownMenuItem(
-                  value: 2,
+                  value: 1,
                   child: Text('الإثنين'),
                 ),
                 DropdownMenuItem(
-                  value: 3,
+                  value: 2,
                   child: Text('الثلاثاء'),
                 ),
                 DropdownMenuItem(
-                  value: 4,
+                  value: 3,
                   child: Text('الأربعاء'),
                 ),
                 DropdownMenuItem(
-                  value: 5,
+                  value: 4,
                   child: Text('الخميس'),
                 ),
                 DropdownMenuItem(
-                  value: 6,
+                  value: 5,
                   child: Text('الجمعة'),
                 ),
               ],

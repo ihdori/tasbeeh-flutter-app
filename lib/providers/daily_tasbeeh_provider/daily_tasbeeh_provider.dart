@@ -20,19 +20,26 @@ final dailyTasbeehProvider = StateNotifierProvider<DailyTasbeeh, DailyTasbeehSta
 
 String changeText(int value) {
   switch (value) {
-    case 0:
-      return 'يارب العالمين';
-    case 1:
-      return 'يا ذا الجلال و الإكرام';
-    case 2:
-      return 'يا قاضي الحاجات';
-    case 3:
-      return 'يا أرحم الراحمين';
-    case 4:
-      return 'ياحيُّ يا قيّوم';
-    case 5:
-      return 'لا إله إلا الله الملك الحق المبين';
+    //Saterday
     case 6:
+      return 'يارب العالمين';
+    //Sunday
+    case 7:
+      return 'يا ذا الجلال و الإكرام';
+    //Monday
+    case 1:
+      return 'يا قاضي الحاجات';
+    //Tuesday
+    case 2:
+      return 'يا أرحم الراحمين';
+    //Wednesday
+    case 3:
+      return 'ياحيُّ يا قيّوم';
+    //Thursday
+    case 4:
+      return 'لا إله إلا الله الملك الحق المبين';
+    //Firday
+    case 5:
       return 'اللهم صلِّ على محمد وآل محمد و عجِّل فرجهم';
     default:
       return '-يارب العالمين-';
