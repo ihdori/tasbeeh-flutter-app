@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasbeeh/providers/tasbeeh_class.dart';
 import 'package:tasbeeh/providers/tasbeeh_provider.dart';
 import 'package:tasbeeh/utils/counted_number_box.dart';
+import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
 import 'package:tasbeeh/utils/tasbeeh_button.dart';
 import 'package:tasbeeh/utils/text_to_say.dart';
 
@@ -14,7 +15,13 @@ Padding alzehraaTasbeeh(TasbeehState tasbeeh, BuildContext context, WidgetRef re
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        textToSay(text: tasbeeh.text, context: context),
+        textToSay(
+          text: tasbeeh.text,
+          context: context,
+          shape: FrameCustomPainterShort(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         countedNumberBox(
           context: context,
           counted: tasbeeh.count,

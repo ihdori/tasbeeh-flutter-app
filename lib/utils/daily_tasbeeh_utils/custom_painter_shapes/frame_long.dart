@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tasbeeh/utils/theme/colors.dart';
 
 class FrameCustomPainterLonge extends CustomPainter {
-  FrameCustomPainterLonge({this.color = Colors.blue});
+  FrameCustomPainterLonge({this.color = TasbeehColor.primary});
   final Color color;
+
   @override
   void paint(Canvas canvas, Size size) {
     Path path_0 = Path();

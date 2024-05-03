@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tasbeeh/screens/home_screen.dart';
+import 'package:tasbeeh/utils/theme/light_theme.dart';
 
 void main() {
   runApp(
@@ -18,14 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'تسبيح',
-      //TODO: Change colors
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xff00EDC0),
-        ),
-        useMaterial3: true,
-        fontFamily: GoogleFonts.ibmPlexSansArabic().fontFamily,
-      ),
+      theme: lightTheme,
       home: const HomePage(),
     );
   }

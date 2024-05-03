@@ -7,11 +7,13 @@ import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_sh
 import 'package:tasbeeh/utils/tasbeeh_button.dart';
 import 'package:tasbeeh/utils/text_to_say.dart';
 import 'package:tasbeeh/utils/thanks_dialog.dart';
+import 'package:tasbeeh/utils/theme/light_theme.dart';
 
 Consumer dailyTasbeeh() {
   return Consumer(
     builder: (context, ref, child) {
       final dailyTasbeeh = ref.watch(dailyTasbeehProvider);
+
       ref.listen(
         dailyTasbeehProvider,
         (previous, next) {
@@ -41,7 +43,7 @@ Consumer dailyTasbeeh() {
             margin: const EdgeInsets.symmetric(horizontal: 75),
             padding: const EdgeInsets.only(left: 8, right: 16),
             decoration: BoxDecoration(
-              border: Border.all(color: Theme.of(context).primaryColor, width: 1),
+              border: Border.all(color: lightTheme.primaryColor, width: 1),
               borderRadius: BorderRadius.circular(12),
             ),
             child: DropdownButton(
