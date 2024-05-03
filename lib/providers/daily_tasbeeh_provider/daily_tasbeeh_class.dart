@@ -66,25 +66,6 @@ class DailyTasbeeh extends StateNotifier<DailyTasbeehState> {
     state = state.copyWith(value: newValue, text: newText);
   }
 
-  // void changeText() {
-  //   switch (state.value) {
-  //     case 0:
-  //       state = state.copyWith(text: 'يارب العالمين');
-  //     case 1:
-  //       state = state.copyWith(text: 'يا ذا الجلال و الإكرام');
-  //     case 2:
-  //       state = state.copyWith(text: 'يا قاضي الحاجات');
-  //     case 3:
-  //       state = state.copyWith(text: 'يا أرحم الراحمين');
-  //     case 4:
-  //       state = state.copyWith(text: 'ياحيُّ يا قيّوم');
-  //     case 5:
-  //       state = state.copyWith(text: 'لا إله إلا الله الملك الحق المبين');
-  //     case 6:
-  //       state = state.copyWith(text: 'اللهم صلِّ على محمد وآل محمد و عجِّل فرجهم');
-  //   }
-  // }
-
   updateShape({required CustomPainter newShape, required double width}) {
     state = state.copyWith(shape: newShape, width: width);
   }
