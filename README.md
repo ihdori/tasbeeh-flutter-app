@@ -1,16 +1,10 @@
-# tasbeeh
+# tasbeeh app
+State managment: Riverpod ^2
 
-A new Flutter project.
+The "Tasbeeh" application is designed to assist in counting daily tasbeeh (acts of glorification) in its various forms. Currently, there are three sections for tasbeeh:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The first section: Tasbeeh of Lady Fatimah.
+The second section: Daily Dhikr 
+  where the user selects the day and the displayed "dhikr" changes accordingly in the designated field.
+The third section: 
+  Custom Dhikr. In this section, the user adds the desired count, and the application calculates the total count, with an option to reset the count if desired by the user.
