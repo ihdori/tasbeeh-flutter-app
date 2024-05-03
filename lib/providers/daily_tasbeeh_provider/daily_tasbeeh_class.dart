@@ -80,4 +80,8 @@ class DailyTasbeeh extends StateNotifier<DailyTasbeehState> {
   updateShape({required CustomPainter newShape, required double width}) {
     state = state.copyWith(shape: newShape, width: width);
   }
+
+  changeShapeColor({required Color color}) {
+    state = state.copyWith(shape: FrameCustomPainterShort(color: color));
+  }
 }
