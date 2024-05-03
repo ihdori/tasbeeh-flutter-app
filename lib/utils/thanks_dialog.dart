@@ -11,7 +11,7 @@ Future<dynamic> thanksDialog({required BuildContext context, tasbeehType}) {
       return Stack(
         children: [
           Positioned(
-            top: 180,
+            top: MediaQuery.of(context).size.height / 5,
             child: AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               contentPadding: const EdgeInsets.symmetric(
