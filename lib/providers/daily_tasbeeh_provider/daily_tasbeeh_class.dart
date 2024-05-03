@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbeeh/providers/daily_tasbeeh_provider/daily_tasbeeh_provider.dart';
+import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_long.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
 
 class DailyTasbeehState {
@@ -38,43 +40,30 @@ class DailyTasbeehState {
 }
 
 class DailyTasbeeh extends StateNotifier<DailyTasbeehState> {
-  DailyTasbeeh()
-      : super(
+  final int value;
+  final text;
+  final width;
+  DailyTasbeeh({
+    required this.value,
+    required this.text,
+    required this.width,
+  }) : super(
           DailyTasbeehState(
             counted: 0,
             toCount: 100,
-            text: 'يارب العالمين',
-            value: 0,
-            shape: FrameCustomPainterShort(),
-            width: 250.0,
+            text: text,
+            value: value,
+            shape: value != 5 && value != 6 ? FrameCustomPainterShort() : FrameCustomPainterLonge(),
+            width: width,
           ),
         );
   void increment() {
     state = state.copyWith(counted: state.counted + 1);
   }
 
-  void updateValue(newValue) {
-    state = state.copyWith(value: newValue);
-    changeText();
-  }
-
-  void changeText() {
-    switch (state.value) {
-      case 0:
-        state = state.copyWith(text: 'يارب العالمين');
-      case 1:
-        state = state.copyWith(text: 'يا ذا الجلال و الإكرام');
-      case 2:
-        state = state.copyWith(text: 'يا قاضي الحاجات');
-      case 3:
-        state = state.copyWith(text: 'يا أرحم الراحمين');
-      case 4:
-        state = state.copyWith(text: 'ياحيُّ يا قيّوم');
-      case 5:
-        state = state.copyWith(text: 'لا إله إلا الله الملك الحق المبين');
-      case 6:
-        state = state.copyWith(text: 'اللهم صلِّ على محمد وآل محمد و عجِّل فرجهم');
-    }
+  updateValue(newValue) {
+    final newText = changeText(newValue);
+    state = state.copyWith(value: newValue, text: newText);
   }
 
   updateShape({required CustomPainter newShape, required double width}) {

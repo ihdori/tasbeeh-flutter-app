@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasbeeh/providers/daily_tasbeeh_provider/daily_tasbeeh_provider.dart';
+import 'package:tasbeeh/providers/time_provider/time_provider.dart';
 import 'package:tasbeeh/utils/counted_number_box.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_long.dart';
 import 'package:tasbeeh/utils/daily_tasbeeh_utils/custom_painter_shapes/frame_shaort.dart';
@@ -13,7 +14,7 @@ Consumer dailyTasbeeh() {
   return Consumer(
     builder: (context, ref, child) {
       final dailyTasbeeh = ref.watch(dailyTasbeehProvider);
-
+      final day = ref.watch(chageableTimeProvider);
       ref.listen(
         dailyTasbeehProvider,
         (previous, next) {
@@ -47,11 +48,14 @@ Consumer dailyTasbeeh() {
               borderRadius: BorderRadius.circular(12),
             ),
             child: DropdownButton(
+              value: day,
               onChanged: (newValue) {
                 ref.read(dailyTasbeehProvider.notifier).updateValue(newValue);
-                if (newValue == 5 || newValue == 6) {
+                ref.read(chageableTimeProvider.notifier).update((state) => newValue);
+                print('$day --- value: $newValue');
+                if (newValue == 4 || newValue == 5) {
                   ref.read(dailyTasbeehProvider.notifier).updateShape(
-                        width: newValue == 5 ? 300 : 380,
+                        width: newValue == 4 ? 300 : 380,
                         newShape: FrameCustomPainterLonge(color: Theme.of(context).primaryColor),
                       );
                 } else {
@@ -67,34 +71,33 @@ Consumer dailyTasbeeh() {
               focusColor: Theme.of(context).primaryColor,
               iconEnabledColor: Theme.of(context).primaryColor,
               isExpanded: true,
-              value: dailyTasbeeh.value,
               items: const <DropdownMenuItem>[
                 DropdownMenuItem(
-                  value: 0,
+                  value: 6,
                   child: Text('السبت'),
                 ),
                 DropdownMenuItem(
-                  value: 1,
+                  value: 7,
                   child: Text('الأحد'),
                 ),
                 DropdownMenuItem(
-                  value: 2,
+                  value: 1,
                   child: Text('الإثنين'),
                 ),
                 DropdownMenuItem(
-                  value: 3,
+                  value: 2,
                   child: Text('الثلاثاء'),
                 ),
                 DropdownMenuItem(
-                  value: 4,
+                  value: 3,
                   child: Text('الأربعاء'),
                 ),
                 DropdownMenuItem(
-                  value: 5,
+                  value: 4,
                   child: Text('الخميس'),
                 ),
                 DropdownMenuItem(
-                  value: 6,
+                  value: 5,
                   child: Text('الجمعة'),
                 ),
               ],
