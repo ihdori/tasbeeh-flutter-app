@@ -53,7 +53,7 @@ Future<dynamic> thanksDialog({required BuildContext context, tasbeehType}) {
                       },
                       padding: EdgeInsets.all(8),
                       child: Text(
-                        'الخروج',
+                        'اغلاق',
                         style: TextStyle(fontSize: 20),
                       ),
                       textColor: Colors.white,
